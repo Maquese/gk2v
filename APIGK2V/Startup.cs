@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using APIGK2V.Contexto;
+using APIGK2V.Contratos;
+using APIGK2V.Entidades;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -25,6 +28,9 @@ namespace APIGK2V
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IContextoMongo,mongoContext>();
+            services.AddSingleton<IRepositorioBase<EntidadeBase>,RepositorioBase<EntidadeBase>>();
+            services.AddSingleton<IPessoaRepositorio,PessoaRepositorio>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -40,7 +46,7 @@ namespace APIGK2V
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseMvc();
         }
     }

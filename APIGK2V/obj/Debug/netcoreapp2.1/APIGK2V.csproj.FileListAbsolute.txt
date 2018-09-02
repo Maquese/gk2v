@@ -1,0 +1,14 @@
+C:\Users\kenney\Documents\Projetos\gk2vServerside\apigk2v\bin\Debug\netcoreapp2.1\APIGK2V.deps.json
+C:\Users\kenney\Documents\Projetos\gk2vServerside\apigk2v\bin\Debug\netcoreapp2.1\APIGK2V.runtimeconfig.json
+C:\Users\kenney\Documents\Projetos\gk2vServerside\apigk2v\bin\Debug\netcoreapp2.1\APIGK2V.runtimeconfig.dev.json
+C:\Users\kenney\Documents\Projetos\gk2vServerside\apigk2v\bin\Debug\netcoreapp2.1\APIGK2V.dll
+C:\Users\kenney\Documents\Projetos\gk2vServerside\apigk2v\bin\Debug\netcoreapp2.1\APIGK2V.pdb
+C:\Users\kenney\Documents\Projetos\gk2vServerside\apigk2v\obj\Debug\netcoreapp2.1\APIGK2V.csprojAssemblyReference.cache
+C:\Users\kenney\Documents\Projetos\gk2vServerside\apigk2v\obj\Debug\netcoreapp2.1\APIGK2V.csproj.CoreCompileInputs.cache
+C:\Users\kenney\Documents\Projetos\gk2vServerside\apigk2v\obj\Debug\netcoreapp2.1\APIGK2V.RazorAssemblyInfo.cache
+C:\Users\kenney\Documents\Projetos\gk2vServerside\apigk2v\obj\Debug\netcoreapp2.1\APIGK2V.RazorAssemblyInfo.cs
+C:\Users\kenney\Documents\Projetos\gk2vServerside\apigk2v\obj\Debug\netcoreapp2.1\APIGK2V.AssemblyInfoInputs.cache
+C:\Users\kenney\Documents\Projetos\gk2vServerside\apigk2v\obj\Debug\netcoreapp2.1\APIGK2V.AssemblyInfo.cs
+C:\Users\kenney\Documents\Projetos\gk2vServerside\apigk2v\obj\Debug\netcoreapp2.1\APIGK2V.RazorTargetAssemblyInfo.cache
+C:\Users\kenney\Documents\Projetos\gk2vServerside\apigk2v\obj\Debug\netcoreapp2.1\APIGK2V.dll
+C:\Users\kenney\Documents\Projetos\gk2vServerside\apigk2v\obj\Debug\netcoreapp2.1\APIGK2V.pdb

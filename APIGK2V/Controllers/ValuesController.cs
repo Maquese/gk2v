@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using APIGK2V.Contratos;
+using APIGK2V.Entidades;
 using Microsoft.AspNetCore.Mvc;
 
 namespace APIGK2V.Controllers
@@ -10,10 +12,17 @@ namespace APIGK2V.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private readonly IPessoaRepositorio _pessoaRepositorio;
+
+        public ValuesController(IPessoaRepositorio pessoaRepositorio)
+        {
+            _pessoaRepositorio = pessoaRepositorio;
+        }
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
+           var r = _pessoaRepositorio.Encontrar(new Pessoa{nome = "Kenney"});
             return new string[] { "value1", "value2" };
         }
 
