@@ -22,7 +22,7 @@ namespace APIGK2V.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-           var r = _pessoaRepositorio.Encontrar(new Pessoa{nome = "Kenney"});
+           var r = _pessoaRepositorio.Listar();
             return new string[] { "value1", "value2" };
         }
 

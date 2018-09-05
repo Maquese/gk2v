@@ -28,7 +28,9 @@ namespace APIGK2V.Contexto
 
         public virtual IList<T> Listar()
         {
-           return _contexto.contextoAtual().GetCollection<T>(typeof(T).Name).Find("{}").ToList();
+            var x  = _contexto.contextoAtual().GetCollection<T>(typeof(T).Name).Find("{}");
+         
+           return x.ToList();
         }
 
         

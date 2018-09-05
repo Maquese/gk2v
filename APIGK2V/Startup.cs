@@ -31,6 +31,7 @@ namespace APIGK2V
             services.AddSingleton<IContextoMongo,mongoContext>();
             services.AddSingleton<IRepositorioBase<EntidadeBase>,RepositorioBase<EntidadeBase>>();
             services.AddSingleton<IPessoaRepositorio,PessoaRepositorio>();
+            services.AddTransient<ICupRepositorio,CupRepositorio>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

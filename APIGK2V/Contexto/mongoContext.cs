@@ -10,6 +10,7 @@ namespace APIGK2V.Contexto
         public mongoContext()
         {
             mongo = new MongoClient().GetDatabase("test");
+            var x = mongo.ListCollections();
         }
 
         public IMongoDatabase contextoAtual()
