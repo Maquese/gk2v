@@ -17,8 +17,7 @@ namespace APIGK2V.Contexto
 
         public T Encontrar(T onde)
         {
-            var where = onde.ToJson();
-            return _contexto.contextoAtual().GetCollection<T>(typeof(T).Name).Find(where).FirstOrDefault();
+            return _contexto.contextoAtual().GetCollection<T>(typeof(T).Name).Find(onde.ToJson()).FirstOrDefault();
         }
 
         public void Insert(T document)
