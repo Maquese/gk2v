@@ -7,7 +7,7 @@ namespace APIGK2V.Contexto
     {
         public CupRepositorio(IContextoMongo context) : base(context)
         {
-            //teste commit git
+            //teste commit git giu
         }
     }
 }
