@@ -2,8 +2,8 @@ namespace APIGK2V.Entidades
 {
     public class Player : EntidadeBase
     {
-        public int RoundId { get; set; }
-        public int MatchId { get; set; }
+        public int RoundID { get; set; }
+        public int MatchID { get; set; }
         public string TeamInitials { get; set; }
         public string CoachName { get; set; }
         public string LineUp { get; set; }
