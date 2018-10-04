@@ -12,3 +12,17 @@ C:\Users\kenney\Documents\Projetos\gk2vServerside\apigk2v\obj\Debug\netcoreapp2.
 C:\Users\kenney\Documents\Projetos\gk2vServerside\apigk2v\obj\Debug\netcoreapp2.1\APIGK2V.RazorTargetAssemblyInfo.cache
 C:\Users\kenney\Documents\Projetos\gk2vServerside\apigk2v\obj\Debug\netcoreapp2.1\APIGK2V.dll
 C:\Users\kenney\Documents\Projetos\gk2vServerside\apigk2v\obj\Debug\netcoreapp2.1\APIGK2V.pdb
+C:\Users\clastech\Desktop\gk2v\gk2v\apigk2v\bin\Debug\netcoreapp2.1\APIGK2V.deps.json
+C:\Users\clastech\Desktop\gk2v\gk2v\apigk2v\bin\Debug\netcoreapp2.1\APIGK2V.runtimeconfig.json
+C:\Users\clastech\Desktop\gk2v\gk2v\apigk2v\bin\Debug\netcoreapp2.1\APIGK2V.runtimeconfig.dev.json
+C:\Users\clastech\Desktop\gk2v\gk2v\apigk2v\bin\Debug\netcoreapp2.1\APIGK2V.dll
+C:\Users\clastech\Desktop\gk2v\gk2v\apigk2v\bin\Debug\netcoreapp2.1\APIGK2V.pdb
+C:\Users\clastech\Desktop\gk2v\gk2v\apigk2v\obj\Debug\netcoreapp2.1\APIGK2V.csprojAssemblyReference.cache
+C:\Users\clastech\Desktop\gk2v\gk2v\apigk2v\obj\Debug\netcoreapp2.1\APIGK2V.csproj.CoreCompileInputs.cache
+C:\Users\clastech\Desktop\gk2v\gk2v\apigk2v\obj\Debug\netcoreapp2.1\APIGK2V.RazorAssemblyInfo.cache
+C:\Users\clastech\Desktop\gk2v\gk2v\apigk2v\obj\Debug\netcoreapp2.1\APIGK2V.RazorAssemblyInfo.cs
+C:\Users\clastech\Desktop\gk2v\gk2v\apigk2v\obj\Debug\netcoreapp2.1\APIGK2V.AssemblyInfoInputs.cache
+C:\Users\clastech\Desktop\gk2v\gk2v\apigk2v\obj\Debug\netcoreapp2.1\APIGK2V.AssemblyInfo.cs
+C:\Users\clastech\Desktop\gk2v\gk2v\apigk2v\obj\Debug\netcoreapp2.1\APIGK2V.RazorTargetAssemblyInfo.cache
+C:\Users\clastech\Desktop\gk2v\gk2v\apigk2v\obj\Debug\netcoreapp2.1\APIGK2V.dll
+C:\Users\clastech\Desktop\gk2v\gk2v\apigk2v\obj\Debug\netcoreapp2.1\APIGK2V.pdb
