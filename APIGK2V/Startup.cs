@@ -48,8 +48,8 @@ namespace APIGK2V
             {
                 app.UseHsts();
             }
-
-            //app.UseHttpsRedirection();
+            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            app.UseHttpsRedirection();
             app.UseMvc();
         }
     }
