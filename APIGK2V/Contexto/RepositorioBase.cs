@@ -15,7 +15,7 @@ namespace APIGK2V.Contexto
             _contexto = context;
         }
 
-        public T Encontrar(T onde)
+        public T Encontrar(string onde)
         {
             return _contexto.contextoAtual().GetCollection<T>(typeof(T).Name).Find(onde.ToJson()).FirstOrDefault();
         }
@@ -25,11 +25,19 @@ namespace APIGK2V.Contexto
            _contexto.contextoAtual().GetCollection<T>(typeof(T).Name).InsertOne(document);
         }
 
+        public void InsertMany(IList<T> documents)
+        {
+            _contexto.contextoAtual().GetCollection<T>(typeof(T).Name).InsertMany(documents);
+        }
+
         public virtual IList<T> Listar()
         {
            return _contexto.contextoAtual().GetCollection<T>(typeof(T).Name).Find("{}").ToList();
         }
 
-        
+        public void Update(string onde,T document)
+        {            
+            _contexto.contextoAtual().GetCollection<T>(typeof(T).Name).UpdateOne(onde,document.ToJson());
+        }
     }
 }

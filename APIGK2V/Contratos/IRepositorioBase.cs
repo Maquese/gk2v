@@ -10,6 +10,9 @@ namespace APIGK2V.Contratos
 
          IList<T> Listar();
 
-         T Encontrar(T onde);
+         T Encontrar(string onde);
+         void InsertMany(IList<T> documents);
+
+         void Update(string onde,  T document);
     }
 }
