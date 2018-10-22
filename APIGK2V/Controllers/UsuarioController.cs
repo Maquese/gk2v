@@ -1,5 +1,6 @@
 using APIGK2V.Contratos;
 using APIGK2V.Entidades;
+using APIGK2V.Enum;
 using APIGK2V.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,6 +25,7 @@ namespace APIGK2V.Controllers
                 usuarioAdd.Nome = usuario.nome;
                 usuarioAdd.Senha = usuario.senha;
                 usuarioAdd.Email  = usuario.email;      
+                usuarioAdd.TipoUsuario = (TipoUsuario)usuario.TipoUsuario;
                 _UsuarioRepositorio.Insert(usuarioAdd);
             }
             catch (System.Exception e)
