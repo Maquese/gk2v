@@ -17,7 +17,9 @@ namespace APIGK2V.Contexto
 
         public T Encontrar(string onde)
         {
-            return _contexto.contextoAtual().GetCollection<T>(typeof(T).Name).Find(onde.ToJson()).FirstOrDefault();
+            //var r  = onde.ToBson();
+            //return _contexto.contextoAtual().GetCollection<T>(typeof(T).Name).Find("{'Email':'admin@gk2v.com.br'}").FirstOrDefault();
+            return _contexto.contextoAtual().GetCollection<T>(typeof(T).Name).Find(onde).FirstOrDefault();
         }
 
         public void Insert(T document)

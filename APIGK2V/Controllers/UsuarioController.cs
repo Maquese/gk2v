@@ -15,7 +15,7 @@ namespace APIGK2V.Controllers
         }
 
         [Route("api/Usuario/Cadastrar")]
-        [HttpGet]
+        [HttpPost]
         public void Cadastrar(UsuarioViewModel usuario)
         {
             try
@@ -38,11 +38,10 @@ namespace APIGK2V.Controllers
         {
             try
             {
-                return new JsonResult(_UsuarioRepositorio.Encontrar(string.Format("{'email':{0},'senha':{1}}",email,senha)));
+                return new JsonResult(_UsuarioRepositorio.Encontrar("{"+string.Format("'Email':'{0}','Senha':'{1}'",email,senha)+"}"));
             }
             catch (System.Exception e)
-            {
-                
+            {                
                 throw;
             }
         }
