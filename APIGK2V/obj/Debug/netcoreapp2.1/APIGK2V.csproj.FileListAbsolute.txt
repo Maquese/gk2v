@@ -26,3 +26,17 @@ C:\Users\clastech\Desktop\gk2v\gk2v\APIGK2V\obj\Debug\netcoreapp2.1\APIGK2V.Asse
 C:\Users\clastech\Desktop\gk2v\gk2v\APIGK2V\obj\Debug\netcoreapp2.1\APIGK2V.RazorTargetAssemblyInfo.cache
 C:\Users\clastech\Desktop\gk2v\gk2v\APIGK2V\obj\Debug\netcoreapp2.1\APIGK2V.dll
 C:\Users\clastech\Desktop\gk2v\gk2v\APIGK2V\obj\Debug\netcoreapp2.1\APIGK2V.pdb
+C:\Users\Giuliano\Desktop\gitTeste\gk2v\APIGK2V\bin\Debug\netcoreapp2.1\APIGK2V.deps.json
+C:\Users\Giuliano\Desktop\gitTeste\gk2v\APIGK2V\bin\Debug\netcoreapp2.1\APIGK2V.runtimeconfig.json
+C:\Users\Giuliano\Desktop\gitTeste\gk2v\APIGK2V\bin\Debug\netcoreapp2.1\APIGK2V.runtimeconfig.dev.json
+C:\Users\Giuliano\Desktop\gitTeste\gk2v\APIGK2V\bin\Debug\netcoreapp2.1\APIGK2V.dll
+C:\Users\Giuliano\Desktop\gitTeste\gk2v\APIGK2V\bin\Debug\netcoreapp2.1\APIGK2V.pdb
+C:\Users\Giuliano\Desktop\gitTeste\gk2v\APIGK2V\obj\Debug\netcoreapp2.1\APIGK2V.csprojAssemblyReference.cache
+C:\Users\Giuliano\Desktop\gitTeste\gk2v\APIGK2V\obj\Debug\netcoreapp2.1\APIGK2V.csproj.CoreCompileInputs.cache
+C:\Users\Giuliano\Desktop\gitTeste\gk2v\APIGK2V\obj\Debug\netcoreapp2.1\APIGK2V.RazorAssemblyInfo.cache
+C:\Users\Giuliano\Desktop\gitTeste\gk2v\APIGK2V\obj\Debug\netcoreapp2.1\APIGK2V.RazorAssemblyInfo.cs
+C:\Users\Giuliano\Desktop\gitTeste\gk2v\APIGK2V\obj\Debug\netcoreapp2.1\APIGK2V.AssemblyInfoInputs.cache
+C:\Users\Giuliano\Desktop\gitTeste\gk2v\APIGK2V\obj\Debug\netcoreapp2.1\APIGK2V.AssemblyInfo.cs
+C:\Users\Giuliano\Desktop\gitTeste\gk2v\APIGK2V\obj\Debug\netcoreapp2.1\APIGK2V.RazorTargetAssemblyInfo.cache
+C:\Users\Giuliano\Desktop\gitTeste\gk2v\APIGK2V\obj\Debug\netcoreapp2.1\APIGK2V.dll
+C:\Users\Giuliano\Desktop\gitTeste\gk2v\APIGK2V\obj\Debug\netcoreapp2.1\APIGK2V.pdb

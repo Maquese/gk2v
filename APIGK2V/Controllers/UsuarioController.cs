@@ -1,4 +1,4 @@
-using APIGK2V.Contratos;
+ using APIGK2V.Contratos;
 using APIGK2V.Entidades;
 using APIGK2V.Enum;
 using APIGK2V.ViewModels;
@@ -11,13 +11,14 @@ namespace APIGK2V.Controllers
         private readonly IUsuarioRepositorio _UsuarioRepositorio;
 
         public UsuarioController(IUsuarioRepositorio usuarioRepositorio)
+
         {
             _UsuarioRepositorio = usuarioRepositorio;
         }
 
         [Route("api/Usuario/Cadastrar")]
         [HttpPost]
-        public void Cadastrar(UsuarioViewModel usuario)
+        public void Cadastrar([FromBody] UsuarioViewModel usuario)
         {
             try
             {                
@@ -36,11 +37,12 @@ namespace APIGK2V.Controllers
 
         [Route("api/Usuario/Login")]
         [HttpPost]
-        public JsonResult Login(string email, string senha)
+        
+        public JsonResult Login([FromBody] UsuarioViewModel usuario)
         {
             try
             {
-                return new JsonResult(_UsuarioRepositorio.Encontrar("{"+string.Format("'Email':'{0}','Senha':'{1}'",email,senha)+"}"));
+                return new JsonResult(_UsuarioRepositorio.Encontrar("{"+string.Format("'Email':'{0}','Senha':'{1}'",usuario.email,usuario.senha)+"}"));
             }
             catch (System.Exception e)
             {                
