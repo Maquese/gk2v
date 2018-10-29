@@ -35,6 +35,7 @@ namespace APIGK2V
             services.AddTransient<IMatchRepositorio,MatchRepositorio>();
             services.AddTransient<IPlayerRepositorio,PlayerRepositorio>();
             services.AddTransient<IUsuarioRepositorio,UsuarioRepositorio>();
+            services.AddTransient<ITemporadaRepositorio,TemporadaRepositorio>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
