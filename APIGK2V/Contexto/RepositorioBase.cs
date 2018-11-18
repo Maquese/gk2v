@@ -41,7 +41,8 @@ namespace APIGK2V.Contexto
 
         public void Update(string onde,T document)
         {            
-            _contexto.contextoAtual().GetCollection<T>(typeof(T).Name).UpdateOne(onde,document.ToJson());
+            var doc = document.ToJson();
+            _contexto.contextoAtual().GetCollection<T>(typeof(T).Name).ReplaceOne(onde,document);
         }
     }
 }

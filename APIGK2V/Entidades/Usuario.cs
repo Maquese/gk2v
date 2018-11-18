@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using APIGK2V.Enum;
 
 namespace APIGK2V.Entidades
@@ -10,6 +11,12 @@ namespace APIGK2V.Entidades
             public string Senha { get; set; }
             public DateTime DataNascimento { get; set; }
             public TipoUsuario TipoUsuario { get; set; }
+            public IList<RespostaQuiz> RespostasQuiz { get; set; }
+
+            public Usuario()
+            {
+                RespostasQuiz = new List<RespostaQuiz>();
+            }
     }
     
 }
