@@ -42,7 +42,8 @@ namespace APIGK2V.Controllers
         {
             try
             {
-                return new JsonResult(_UsuarioRepositorio.Encontrar("{"+string.Format("'Email':'{0}','Senha':'{1}'",usuario.email,usuario.senha)+"}"));
+                var encontrarPor = "{"+string.Format("'Email':'{0}','Senha':'{1}'",usuario.email,usuario.senha)+"}";
+                return new JsonResult(_UsuarioRepositorio.Encontrar(encontrarPor));
             }
             catch (System.Exception e)
             {                

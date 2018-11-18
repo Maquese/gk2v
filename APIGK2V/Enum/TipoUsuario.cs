@@ -2,7 +2,7 @@ namespace APIGK2V.Enum
 {
     public enum TipoUsuario
     {
-        Admin,
-        Apostador
+        Admin = 1,
+        Apostador = 0
     }
 }
