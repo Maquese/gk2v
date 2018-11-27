@@ -17,12 +17,24 @@ namespace APIGK2V.Controllers
         
         [HttpPost]
         [Route("api/Temporada/Inserir")]
-        public void InserirNovaTemporada(TemporadaViewModel temporada)
+        public void InserirNovaTemporada([FromBody]TemporadaViewModel temporada)
         {
-            var temporadaAdd = new Temporada
+            if(temporada.TimesMesmaEpoca)
             {
-                
-            };
+                ///randomiza o ano 
+                // pega as selecoes
+
+            }
+        }
+
+        private  void PegaSelecoesMesmoAnoRandomicamente()
+        {
+
+        }
+
+        private void PegaSelecoesPorFaseRandomicamente()
+        {
+            
         }
     }
 }
