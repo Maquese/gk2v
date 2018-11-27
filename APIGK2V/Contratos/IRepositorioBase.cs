@@ -14,5 +14,7 @@ namespace APIGK2V.Contratos
          void InsertMany(IList<T> documents);
 
          void Update(string onde,  T document);
+
+         IList<T> ListarOnde(string onde);
     }
 }
