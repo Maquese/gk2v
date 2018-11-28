@@ -11,7 +11,7 @@ namespace APIGK2V.Entidades
         public DateTime DataFinal { get; set; } 
         public int UsuarioVencedor { get; set; }
         public bool TimesMesmaEpoca {get;set;}
-        
+        public string Nome { get; set; }
         public List<Jogo> Jogos { get; set; }
    
         public Temporada()

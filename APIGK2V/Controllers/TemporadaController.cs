@@ -22,20 +22,20 @@ namespace APIGK2V.Controllers
         
         [HttpPost]
         [Route("api/Temporada/Inserir")]
-        public Temporada InserirNovaTemporada([FromBody]TemporadaViewModel temporada)
+        public Temporada InserirNovaTemporada(TemporadaViewModel temporada)
         {
             var lista = GerarListaAnosPossiveis((Fase)temporada.Fase);
 
                 Temporada temporadaAdd = new Temporada();
-            if(temporada.TimesMesmaEpoca)
-            {               
-                ///randomiza o ano 
-                // pega as selecoes
-
+                
                 temporadaAdd.FaseInicial = temporada.Fase;
                 temporadaAdd.TimesMesmaEpoca = temporada.TimesMesmaEpoca;
                 temporadaAdd.DataInicial = DateTime.Now;
-                
+                temporadaAdd.Nome = temporada.Nome;
+            if(temporada.TimesMesmaEpoca)
+            {               
+                ///randomiza o ano 
+                // pega as selecoes                
 
                 Random r = new Random();
                 var ano = lista[r.Next(0,lista.Count)];
@@ -241,6 +241,16 @@ namespace APIGK2V.Controllers
                  }
              }
              return quantidade;
+         }
+
+         [HttpPost]
+        [Route("api/Temporada/ListarJogosPorTemporadaFase")]
+         public List<Jogo> ListarJogosPorTemporadaFase([FromBody]TemporadaViewModel temporada)
+         {
+            var jogos = new List<Jogo>();
+            var onde = "{"+String.Format("_id : ObjectId('{0}')",temporada.Id)+"}";
+            var temporadaBd = _temporadaRepositorio.Encontrar(onde);
+            return temporadaBd.Jogos.Where(x => x.Fase == temporada.Fase).ToList();
          }
     }
 }
