@@ -24,7 +24,7 @@ namespace APIGK2V.Controllers
         
         [HttpPost]
         [Route("api/Temporada/Inserir")]
-        public Temporada InserirNovaTemporada(TemporadaViewModel temporada)
+        public Temporada InserirNovaTemporada([FromBody]TemporadaViewModel temporada)
         {
             var lista = GerarListaAnosPossiveis((Fase)temporada.Fase);
 
@@ -295,6 +295,7 @@ namespace APIGK2V.Controllers
                 };                
                 usuario.Apostas.Add(aposta);
             }
+            _usuarioRepositorio.Update(onde, usuario);
             
         }
     }
