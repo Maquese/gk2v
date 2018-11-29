@@ -12,13 +12,14 @@ namespace APIGK2V.Controllers
     {
         private readonly ITemporadaRepositorio _temporadaRepositorio;
         private readonly IMatchRepositorio _matchRepositorio;
+        private readonly IUsuarioRepositorio _usuarioRepositorio;
 
-        public TemporadaController(ITemporadaRepositorio temporadaRepositorio, IMatchRepositorio matchRepositorio)
+        public TemporadaController(ITemporadaRepositorio temporadaRepositorio, IMatchRepositorio matchRepositorio, IUsuarioRepositorio usuarioRepositorio)
         {
             _temporadaRepositorio = temporadaRepositorio;
             _matchRepositorio = matchRepositorio;
+            _usuarioRepositorio = usuarioRepositorio;
         }
-
         
         [HttpPost]
         [Route("api/Temporada/Inserir")]
@@ -26,17 +27,13 @@ namespace APIGK2V.Controllers
         {
             var lista = GerarListaAnosPossiveis((Fase)temporada.Fase);
 
-                Temporada temporadaAdd = new Temporada();
-                
+                Temporada temporadaAdd = new Temporada();                
                 temporadaAdd.FaseInicial = temporada.Fase;
                 temporadaAdd.TimesMesmaEpoca = temporada.TimesMesmaEpoca;
                 temporadaAdd.DataInicial = DateTime.Now;
                 temporadaAdd.Nome = temporada.Nome;
             if(temporada.TimesMesmaEpoca)
             {               
-                ///randomiza o ano 
-                // pega as selecoes                
-
                 Random r = new Random();
                 var ano = lista[r.Next(0,lista.Count)];
 
@@ -178,7 +175,7 @@ namespace APIGK2V.Controllers
             return jogos;
         }
 
-         private List<string> GerarListaAnosPossiveis(Fase fase)
+        private List<string> GerarListaAnosPossiveis(Fase fase)
          {
                 var lista = new List<string>();
                 if(fase != Fase.Oitavas){
@@ -209,7 +206,7 @@ namespace APIGK2V.Controllers
                 return lista;
          }
 
-         private int QuantidadeTimes(Fase fase)
+        private int QuantidadeTimes(Fase fase)
          {
              var quantidade = 0;
              switch (fase)
@@ -243,14 +240,56 @@ namespace APIGK2V.Controllers
              return quantidade;
          }
 
-         [HttpPost]
+        [HttpPost]
         [Route("api/Temporada/ListarJogosPorTemporadaFase")]
-         public List<Jogo> ListarJogosPorTemporadaFase([FromBody]TemporadaViewModel temporada)
-         {
+        public List<Jogo> ListarJogosPorTemporadaFase([FromBody]TemporadaViewModel temporada)
+        {
             var jogos = new List<Jogo>();
             var onde = "{"+String.Format("_id : ObjectId('{0}')",temporada.Id)+"}";
             var temporadaBd = _temporadaRepositorio.Encontrar(onde);
             return temporadaBd.Jogos.Where(x => x.Fase == temporada.Fase).ToList();
-         }
+        }
+
+        [HttpPost]
+        [Route("api/Temporada/ListarTemporadas")]
+        public IList<Temporada> ListarTemporadas([FromBody] ApostasUsuarioTemporadaViewModel apostasUsuarioTemporadaViewModel)
+        {
+            var temporadas = _temporadaRepositorio.Listar();
+            var retorno = new List<Temporada>();
+            var ondeAposta = "{"+String.Format("_id : ObjectId('{0}')",apostasUsuarioTemporadaViewModel.IdUsuario) + "}" ;
+            var usuario = _usuarioRepositorio.Encontrar(ondeAposta);
+
+            foreach (var item in temporadas)
+            {                
+                var apostasTemporada = usuario.Apostas.Where(x => x.CodigoTemporada == item._id.ToString()).ToList();
+                if(apostasTemporada.Where(x => x.Jogo.Fase == (int)Fase.Final).Count() == 0)
+                {
+                    retorno.Add(item);
+                }
+            }
+            return retorno;
+        }
+
+        [HttpPost]
+        [Route("api/Temporada/Apostar")]
+        public void Apostar([FromBody]ApostasUsuarioTemporadaViewModel apostaViewModel)
+        {
+            var ondeAposta = "{"+String.Format("_id : ObjectId('{0}')",apostaViewModel.IdUsuario) + "}" ;
+            var usuario = _usuarioRepositorio.Encontrar(ondeAposta);
+
+            var onde = "{"+String.Format("_id : ObjectId('{0}')",apostaViewModel.IdTemporada)+"}";
+            var temporadaBd = _temporadaRepositorio.Encontrar(onde);
+
+            foreach (var item in apostaViewModel.Apostas)
+            {
+                var aposta = new Aposta
+                {
+                    CodigoTemporada = apostaViewModel.IdTemporada,
+                    Pontos = item.Pontos,
+                    //Jogo = temporadaBd.Jogos.Where(x => x.)  
+                };
+            }
+            
+        }
     }
 }
