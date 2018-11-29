@@ -23,7 +23,7 @@ namespace APIGK2V.Controllers
         [HttpPost]
         [Route("api/Quiz/QuizDiario")]
         public Quiz QuizDiario()
-        {
+        {   
                     Quiz retorno = null;
             try
             {
