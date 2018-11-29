@@ -1,6 +1,6 @@
 namespace APIGK2V.Entidades
 {
-    public class Jogo
+    public class Jogo : EntidadeBase
     {
         public string PrimeiraSelecao { get; set; }
         public string SegundaSelecao { get; set; }
