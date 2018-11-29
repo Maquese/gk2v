@@ -14,6 +14,8 @@ namespace APIGK2V.Entidades
             public IList<RespostaQuiz> RespostasQuiz { get; set; }
             public IList<Aposta> Apostas { get; set; }
 
+            public int Pontuacao { get; set; }
+
             public Usuario()
             {
                 RespostasQuiz = new List<RespostaQuiz>();

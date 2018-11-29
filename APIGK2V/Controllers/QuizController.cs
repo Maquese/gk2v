@@ -49,6 +49,7 @@ namespace APIGK2V.Controllers
                 var onde = "{" + string.Format("_id : ObjectId('{0}')",resposta.IdUsuario)+ "}";
                 var usuario = _usuarioRepositorio.Encontrar(onde);
                 usuario.RespostasQuiz.Add(new RespostaQuiz{Acertou = resposta.Acertou,DataResposta = DateTime.Now, IdQuiz = resposta.IdQuiz});
+                usuario.Pontuacao  += resposta.Acertou ? 30 : 0;
                 _usuarioRepositorio.Update(onde,usuario);
             }
             catch (System.Exception)
