@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "ProjectFilePath": "c:\\Users\\indefinido\\Desktop\\gk2v\\gk2v-server\\gk2v\\APIGK2V\\APIGK2V.csproj",
+=======
+  "ProjectFilePath": "c:\\Users\\clastech\\Desktop\\gk2v\\gk2v\\APIGK2V\\APIGK2V.csproj",
+>>>>>>> e92c04024981d82fb2e077834c8d589ecaad6117
   "TargetFramework": "netcoreapp2.1",
   "TagHelpers": [],
   "Configuration": {
