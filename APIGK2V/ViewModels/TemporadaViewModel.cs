@@ -6,5 +6,6 @@ namespace APIGK2V.ViewModels
         public int Numero { get; set; }
         public int Fase { get; set; }
         public bool TimesMesmaEpoca { get; set; }
+        public string Nome { get; set; }
     }
 }
