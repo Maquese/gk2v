@@ -6,6 +6,7 @@ using APIGK2V.Enum;
 using APIGK2V.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using MongoDB.Bson;
 namespace APIGK2V.Controllers
 {
     public class TemporadaController : ControllerBase
@@ -169,7 +170,8 @@ namespace APIGK2V.Controllers
                     PrimeiraSelecao = timesVencedoresSemi[i].Nome,
                     SegundaSelecao = timesVencedoresSemi[i+1].Nome,
                     Vencedor = timesVencedoresSemi[i].Gols > timesVencedoresSemi[i+1].Gols ? timesVencedoresSemi[i].Nome : timesVencedoresSemi[i + 1].Nome,
-                    Fase = (int)Fase.Final
+                    Fase = (int)Fase.Final,
+                    _id = new ObjectId()
                 });
             }
             return jogos;
