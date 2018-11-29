@@ -12605,11 +12605,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\indefinido\\Desktop\\gk2v-server\\gk2v\\APIGK2V\\APIGK2V.csproj",
+      "projectUniqueName": "C:\\Users\\indefinido\\Desktop\\gk2v\\gk2v-server\\gk2v\\APIGK2V\\APIGK2V.csproj",
       "projectName": "APIGK2V",
-      "projectPath": "C:\\Users\\indefinido\\Desktop\\gk2v-server\\gk2v\\APIGK2V\\APIGK2V.csproj",
+      "projectPath": "C:\\Users\\indefinido\\Desktop\\gk2v\\gk2v-server\\gk2v\\APIGK2V\\APIGK2V.csproj",
       "packagesPath": "C:\\Users\\indefinido\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\indefinido\\Desktop\\gk2v-server\\gk2v\\APIGK2V\\obj\\",
+      "outputPath": "C:\\Users\\indefinido\\Desktop\\gk2v\\gk2v-server\\gk2v\\APIGK2V\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
