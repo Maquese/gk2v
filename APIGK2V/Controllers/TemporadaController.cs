@@ -291,11 +291,13 @@ namespace APIGK2V.Controllers
                 {
                     CodigoTemporada = apostaViewModel.IdTemporada,
                     Pontos = item.Pontos,
-                    Jogo = temporadaBd.Jogos.Where(x => x._id.ToString() == item.CodigoJogo).FirstOrDefault()
+                    Jogo = temporadaBd.Jogos.Where(x => x._id.ToString() == item.CodigoJogo).FirstOrDefault(),
+                    _id = ObjectId.GenerateNewId()
                 };                
+                usuario.Pontuacao += item.Pontos > 0 ? item.Pontos : 0;
                 usuario.Apostas.Add(aposta);
             }
-            _usuarioRepositorio.Update(onde, usuario);
+            _usuarioRepositorio.Update(ondeAposta, usuario);
             
         }
     }
