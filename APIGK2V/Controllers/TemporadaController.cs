@@ -24,7 +24,7 @@ namespace APIGK2V.Controllers
         
         [HttpPost]
         [Route("api/Temporada/Inserir")]
-        public Temporada InserirNovaTemporada([FromBody]TemporadaViewModel temporada)
+        public Temporada InserirNovaTemporada(TemporadaViewModel temporada)
         {
             var lista = GerarListaAnosPossiveis((Fase)temporada.Fase);
 
@@ -119,7 +119,8 @@ namespace APIGK2V.Controllers
                     PrimeiraSelecao = times[i].Nome,
                     SegundaSelecao = times[i+1].Nome,
                     Vencedor = times[i].Gols > times[i+1].Gols ? times[i].Nome : times[i + 1].Nome,
-                    Fase = (int)Fase.Oitavas
+                    Fase = (int)Fase.Oitavas,
+                    _id =  ObjectId.GenerateNewId()
                 });
             }
             times = PegarVencedores(jogos,times);
@@ -136,7 +137,8 @@ namespace APIGK2V.Controllers
                     PrimeiraSelecao = timesVencedoresOitavas[i].Nome,
                     SegundaSelecao = timesVencedoresOitavas[i+1].Nome,
                     Vencedor = timesVencedoresOitavas[i].Gols > timesVencedoresOitavas[i+1].Gols ? timesVencedoresOitavas[i].Nome : timesVencedoresOitavas[i + 1].Nome,
-                    Fase = (int)Fase.Quartas
+                    Fase = (int)Fase.Quartas,
+                    _id =  ObjectId.GenerateNewId()
                 });
             }
             timesVencedoresOitavas = PegarVencedores(jogos,timesVencedoresOitavas);
@@ -153,7 +155,8 @@ namespace APIGK2V.Controllers
                     PrimeiraSelecao = timesVencedoresQuartas[i].Nome,
                     SegundaSelecao = timesVencedoresQuartas[i+1].Nome,
                     Vencedor = timesVencedoresQuartas[i].Gols > timesVencedoresQuartas[i+1].Gols ? timesVencedoresQuartas[i].Nome : timesVencedoresQuartas[i + 1].Nome,
-                    Fase = (int)Fase.SemiFinais
+                    Fase = (int)Fase.SemiFinais,
+                    _id =  ObjectId.GenerateNewId()
                 });
             }
             timesVencedoresQuartas = PegarVencedores(jogos,timesVencedoresQuartas);
