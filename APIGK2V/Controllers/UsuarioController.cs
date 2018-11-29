@@ -1,18 +1,21 @@
- using APIGK2V.Contratos;
+using System;
+using APIGK2V.Contratos;
 using APIGK2V.Entidades;
 using APIGK2V.Enum;
 using APIGK2V.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace APIGK2V.Controllers
 {
     public class UsuarioController : ControllerBase
     {
+        private readonly ITemporadaRepositorio _temporadaRepositorio;
         private readonly IUsuarioRepositorio _UsuarioRepositorio;
 
-        public UsuarioController(IUsuarioRepositorio usuarioRepositorio)
-
+        public UsuarioController(IUsuarioRepositorio usuarioRepositorio, ITemporadaRepositorio temporadaRepositorio)
         {
+            _temporadaRepositorio = temporadaRepositorio;
             _UsuarioRepositorio = usuarioRepositorio;
         }
 
@@ -36,8 +39,7 @@ namespace APIGK2V.Controllers
         }
 
         [Route("api/Usuario/Login")]
-        [HttpPost]
-        
+        [HttpPost]      
         public JsonResult Login([FromBody] UsuarioViewModel usuario)
         {
             try
@@ -50,5 +52,33 @@ namespace APIGK2V.Controllers
                 throw;
             }
         }
+
+        /*[HttpPost]
+        public IList<Aposta> ListarApostas([FromBody] ApostasUsuarioTemporadaViewModel apostasUsuarioTemporadaViewModel)
+        {
+            
+            var onde = "{"+String.Format("_id : ObjectId('{0}')",apostasUsuarioTemporadaViewModel.IdTemporada)+"}";
+            var temporadaBd = _temporadaRepositorio.Encontrar(onde);
+
+            var ondeAposta = "{"+String.Format("_id : ObjectId('{0}')",apostasUsuarioTemporadaViewModel.IdUsuario) + "}" ;
+            var usuario = _UsuarioRepositorio.Encontrar(ondeAposta);
+
+            var apostasTemporada = usuario.Apostas.Where(x => x.CodigoTemporada == temporadaBd._id.ToString()).ToList();
+
+            if(apostasTemporada.Where(x => x.Jogo.Fase == (int)Fase.Final).Count() > 0)
+            {
+
+            }else if(apostasTemporada.Where(x => x.Jogo.Fase == (int)Fase.SemiFinais).Count() > 0)
+            {
+
+            }else if(apostasTemporada.Where(x => x.Jogo.Fase == (int)Fase.Quartas).Count() > 0)
+            {
+
+            }else if(apostasTemporada.Where(x => x.Jogo.Fase == (int)Fase.Oitavas).Count() > 0)
+            {
+
+            }
+        }*/
+
     }
 }
