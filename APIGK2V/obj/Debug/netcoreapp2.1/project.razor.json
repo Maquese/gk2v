@@ -1,10 +1,14 @@
 {
-<<<<<<< HEAD
   "ProjectFilePath": "c:\\Users\\ViniciusMaggiOliveir\\Desktop\\projetos\\gk2v\\APIGK2V\\APIGK2V.csproj",
-=======
-  "ProjectFilePath": "c:\\Users\\kenney\\Documents\\Projetos\\gk2vServerside\\APIGK2V\\APIGK2V.csproj",
->>>>>>> fb798d8c1036f3eb5565addd89efa14be921f96b
   "TargetFramework": "netcoreapp2.1",
   "TagHelpers": [],
-  "Configuration": null
+  "Configuration": {
+    "ConfigurationName": "MVC-2.1",
+    "LanguageVersion": "2.1",
+    "Extensions": [
+      {
+        "ExtensionName": "MVC-2.1"
+      }
+    ]
+  }
 }
