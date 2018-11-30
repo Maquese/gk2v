@@ -138,7 +138,7 @@ namespace APIGK2V.Controllers
             while(listaRandomica.Count < quantidade)
             {
                  var nome = lista[r.Next(0,lista.Count - 1)];
-                 if(!listaRandomica.Select(x => x.Nome).Contains(nome))
+                 if(!listaRandomica.Select(x => x.Nome).Contains(nome) && !listaRandomica.Select(x => x.Nome).Contains(nome + " do ano " + ano))
                  {
                      listaRandomica.Add(new  TimesmGolsViewModel
                      {
