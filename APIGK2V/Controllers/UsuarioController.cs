@@ -22,21 +22,35 @@ namespace APIGK2V.Controllers
 
         [Route("api/Usuario/Cadastrar")]
         [HttpPost]
-        public void Cadastrar([FromBody] UsuarioViewModel usuario)
+        public Usuario Cadastrar([FromBody] UsuarioViewModel usuario)
         {
+            
+                var usuarioAdd = new Usuario();
             try
             {                
-                var usuarioAdd = new Usuario();
+                if(string.IsNullOrEmpty(usuario.id))
+                {
                 usuarioAdd.Nome = usuario.nome;
                 usuarioAdd.Senha = usuario.senha;
                 usuarioAdd.Email  = usuario.email;      
                 usuarioAdd.TipoUsuario = (TipoUsuario)usuario.TipoUsuario;
+                
                 _UsuarioRepositorio.Insert(usuarioAdd);
+                }else{
+                    
+                    var onde = "{"+String.Format("_id : ObjectId('{0}')",usuario.id)+"}";
+                    usuarioAdd = _UsuarioRepositorio.Encontrar(onde);
+                    usuarioAdd.Nome = usuario.nome;
+                    usuarioAdd.Senha = usuario.senha;
+                    usuarioAdd.Email  = usuario.email;    
+                    _UsuarioRepositorio.Update(onde,usuarioAdd);
+                }
             }
             catch (System.Exception e)
             {                
                 throw;
             }
+            return usuarioAdd;
         }
 
         [Route("api/Usuario/Login")]

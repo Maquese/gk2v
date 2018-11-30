@@ -38,7 +38,7 @@ namespace APIGK2V.Controllers
                 Random r = new Random();
                 var ano = lista[r.Next(0,lista.Count)];
 
-                var onde = "{" +String.Format(" 'Year' : {0}" ,"1938") + "}";
+                var onde = "{" +String.Format(" 'Year' : {0}" ,ano) + "}";
                 IList<Match> matches = _matchRepositorio.ListarOnde(onde);
 
                 var quantidade = QuantidadeTimes((Fase)temporada.Fase);
