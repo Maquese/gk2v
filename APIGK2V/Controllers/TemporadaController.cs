@@ -28,6 +28,7 @@ namespace APIGK2V.Controllers
         {
             var lista = GerarListaAnosPossiveis((Fase)temporada.Fase);
 
+                 var quantidade = QuantidadeTimes((Fase)temporada.Fase);
                 Temporada temporadaAdd = new Temporada();                
                 temporadaAdd.FaseInicial = temporada.Fase;
                 temporadaAdd.TimesMesmaEpoca = temporada.TimesMesmaEpoca;
@@ -41,10 +42,51 @@ namespace APIGK2V.Controllers
                 var onde = "{" +String.Format(" 'Year' : {0}" ,ano) + "}";
                 IList<Match> matches = _matchRepositorio.ListarOnde(onde);
 
-                var quantidade = QuantidadeTimes((Fase)temporada.Fase);
+                quantidade = QuantidadeTimes((Fase)temporada.Fase);
                 var times = PegaSelecoesPorFaseRandomicamente(matches,quantidade);
                 
                 switch ((Fase)temporada.Fase)
+                {
+                    case Fase.Oitavas:
+                    {
+                        temporadaAdd.Jogos = GeraJogosPorFaseOitavas(times);
+                        break;
+                    }
+                    case Fase.Quartas:
+                    {
+                        temporadaAdd.Jogos = GeraJogosPorFaseQuarta(times);
+                        break;
+                    }
+                    case Fase.SemiFinais:
+                    {
+                        temporadaAdd.Jogos = GeraJogosPorFaseSemifinal(times);
+                        break;
+                    }
+                    case Fase.Final:
+                    {
+                        temporadaAdd.Jogos = GeraJogosPorFaseFinal(times);
+                        break;
+                    }
+                    default:
+                    {
+                        break;
+                    }
+                }
+            }else
+            {
+                var times = new List<TimesmGolsViewModel>();
+                 Random r = new Random();
+                 while(times.Count < quantidade){
+                    var ano = lista[r.Next(lista.Count)];
+
+                    var onde = "{" +String.Format(" 'Year' : {0}" ,ano) + "}";
+                    IList<Match> matches = _matchRepositorio.ListarOnde(onde);
+
+                    times.AddRange(PegaSelecoesPorFaseRandomicamente(matches,1,ano));
+                    
+                 }
+
+                 switch ((Fase)temporada.Fase)
                 {
                     case Fase.Oitavas:
                     {
@@ -86,7 +128,7 @@ namespace APIGK2V.Controllers
             return retorno;
         }
 
-        private List<TimesmGolsViewModel> PegaSelecoesPorFaseRandomicamente(IList<Match> matches,int quantidade)
+        private List<TimesmGolsViewModel> PegaSelecoesPorFaseRandomicamente(IList<Match> matches,int quantidade, string ano = "")
         {
             var lista = matches.Select(x => x.HomeTeamName).Distinct().ToList();
             lista.Union(matches.Select(x => x.AwayTeamName).Distinct()).ToList();
@@ -100,7 +142,7 @@ namespace APIGK2V.Controllers
                  {
                      listaRandomica.Add(new  TimesmGolsViewModel
                      {
-                         Nome = nome,
+                         Nome = string.IsNullOrEmpty(ano) ? nome :  (nome + " do ano " + ano),
                          Gols = (matches.Where(x => x.HomeTeamName == nome).Sum(x => x.HomeTeamGoals) + matches.Where(x => x.HomeTeamName == nome).Sum(x => x.AwayTeamGoals))
                      } );
                      lista.Remove(nome);
