@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace APIGK2V.Entidades
 {
@@ -10,7 +11,12 @@ namespace APIGK2V.Entidades
         public DateTime DataFinal { get; set; } 
         public int UsuarioVencedor { get; set; }
         public bool TimesMesmaEpoca {get;set;}
+        public string Nome { get; set; }
+        public List<Jogo> Jogos { get; set; }
    
-        
+        public Temporada()
+        {
+            Jogos = new List<Jogo>();
+        }
     }
 }

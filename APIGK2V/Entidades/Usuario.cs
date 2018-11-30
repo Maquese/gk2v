@@ -12,10 +12,14 @@ namespace APIGK2V.Entidades
             public DateTime DataNascimento { get; set; }
             public TipoUsuario TipoUsuario { get; set; }
             public IList<RespostaQuiz> RespostasQuiz { get; set; }
+            public IList<Aposta> Apostas { get; set; }
+
+            public int Pontuacao { get; set; }
 
             public Usuario()
             {
                 RespostasQuiz = new List<RespostaQuiz>();
+                Apostas = new List<Aposta>();
             }
     }
     

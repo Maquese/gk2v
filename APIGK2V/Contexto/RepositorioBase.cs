@@ -39,6 +39,11 @@ namespace APIGK2V.Contexto
            return _contexto.contextoAtual().GetCollection<T>(typeof(T).Name).Find("{}").ToList();
         }
 
+        public IList<T> ListarOnde(string onde)
+        {
+            return _contexto.contextoAtual().GetCollection<T>(typeof(T).Name).Find(onde).ToList();
+        }
+
         public void Update(string onde,T document)
         {            
             var doc = document.ToJson();

@@ -23,18 +23,23 @@ namespace APIGK2V.Controllers
         [HttpPost]
         [Route("api/Quiz/QuizDiario")]
         public Quiz QuizDiario()
-        {
+        {   
                     Quiz retorno = null;
             try
             {
                 IList<Quiz> lista = _quizRepositorio.Listar();
                 Random r = new Random();
 
+<<<<<<< HEAD
 
                 
                 var value = r.Next(lista.Count());
 
                 retorno = lista[value]; 
+=======
+                Random r = new Random();
+                retorno = lista[r.Next(lista.Count)];
+>>>>>>> fb798d8c1036f3eb5565addd89efa14be921f96b
                                                    
             }
             catch (System.Exception)
@@ -54,6 +59,7 @@ namespace APIGK2V.Controllers
                 var onde = "{" + string.Format("_id : ObjectId('{0}')",resposta.IdUsuario)+ "}";
                 var usuario = _usuarioRepositorio.Encontrar(onde);
                 usuario.RespostasQuiz.Add(new RespostaQuiz{Acertou = resposta.Acertou,DataResposta = DateTime.Now, IdQuiz = resposta.IdQuiz});
+                usuario.Pontuacao  += resposta.Acertou ? 30 : 0;
                 _usuarioRepositorio.Update(onde,usuario);
             }
             catch (System.Exception)
