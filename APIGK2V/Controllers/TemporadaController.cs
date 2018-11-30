@@ -269,7 +269,11 @@ namespace APIGK2V.Controllers
                 var apostasTemporada = usuario.Apostas.Where(x => x.CodigoTemporada == item._id.ToString()).ToList();
                 if(apostasTemporada.Where(x => x.Jogo.Fase == (int)Fase.Final).Count() == 0)
                 {
+                    if(apostasTemporada.Count > 0){
+                    item.FaseInicial = apostasTemporada.Select(x => x.Jogo.Fase).Max() + 1;
+                    }
                     retorno.Add(item);
+
                 }
             }
             return retorno;

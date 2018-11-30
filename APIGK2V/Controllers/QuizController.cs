@@ -29,7 +29,8 @@ namespace APIGK2V.Controllers
             {
                 IList<Quiz> lista = _quizRepositorio.Listar();
 
-                retorno = lista.FirstOrDefault();
+                Random r = new Random();
+                retorno = lista[r.Next(lista.Count)];
                                                    
             }
             catch (System.Exception)
