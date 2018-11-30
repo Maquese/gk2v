@@ -5,6 +5,7 @@ using APIGK2V.Enum;
 using APIGK2V.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace APIGK2V.Controllers
 {
@@ -79,6 +80,15 @@ namespace APIGK2V.Controllers
 
             }
         }*/
+
+        [HttpPost]
+        [Route("api/Usuario/RankingUsuarioPorPontos")]
+        public IList<RetornoRankingViewModel> RankingUsuarioPorPontos()
+        {
+            var retorno =  _UsuarioRepositorio.Listar().Where(x => x.TipoUsuario != TipoUsuario.Admin).Select(x => new RetornoRankingViewModel { Nome = x.Nome, Pontuacao = x.Pontuacao }).OrderByDescending(x => x.Pontuacao).ToList();
+
+            return retorno;
+        }
 
     }
 }
