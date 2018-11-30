@@ -24,10 +24,11 @@ namespace APIGK2V.Controllers
         
         [HttpPost]
         [Route("api/Temporada/Inserir")]
-        public Temporada InserirNovaTemporada(TemporadaViewModel temporada)
+        public Temporada InserirNovaTemporada([FromBody]TemporadaViewModel temporada)
         {
             var lista = GerarListaAnosPossiveis((Fase)temporada.Fase);
 
+                 var quantidade = QuantidadeTimes((Fase)temporada.Fase);
                 Temporada temporadaAdd = new Temporada();                
                 temporadaAdd.FaseInicial = temporada.Fase;
                 temporadaAdd.TimesMesmaEpoca = temporada.TimesMesmaEpoca;
@@ -38,13 +39,54 @@ namespace APIGK2V.Controllers
                 Random r = new Random();
                 var ano = lista[r.Next(0,lista.Count)];
 
-                var onde = "{" +String.Format(" 'Year' : {0}" ,"1938") + "}";
+                var onde = "{" +String.Format(" 'Year' : {0}" ,ano) + "}";
                 IList<Match> matches = _matchRepositorio.ListarOnde(onde);
 
-                var quantidade = QuantidadeTimes((Fase)temporada.Fase);
+                quantidade = QuantidadeTimes((Fase)temporada.Fase);
                 var times = PegaSelecoesPorFaseRandomicamente(matches,quantidade);
                 
                 switch ((Fase)temporada.Fase)
+                {
+                    case Fase.Oitavas:
+                    {
+                        temporadaAdd.Jogos = GeraJogosPorFaseOitavas(times);
+                        break;
+                    }
+                    case Fase.Quartas:
+                    {
+                        temporadaAdd.Jogos = GeraJogosPorFaseQuarta(times);
+                        break;
+                    }
+                    case Fase.SemiFinais:
+                    {
+                        temporadaAdd.Jogos = GeraJogosPorFaseSemifinal(times);
+                        break;
+                    }
+                    case Fase.Final:
+                    {
+                        temporadaAdd.Jogos = GeraJogosPorFaseFinal(times);
+                        break;
+                    }
+                    default:
+                    {
+                        break;
+                    }
+                }
+            }else
+            {
+                var times = new List<TimesmGolsViewModel>();
+                 Random r = new Random();
+                 while(times.Count < quantidade){
+                    var ano = lista[r.Next(lista.Count)];
+
+                    var onde = "{" +String.Format(" 'Year' : {0}" ,ano) + "}";
+                    IList<Match> matches = _matchRepositorio.ListarOnde(onde);
+
+                    times.AddRange(PegaSelecoesPorFaseRandomicamente(matches,1,ano));
+                    
+                 }
+
+                 switch ((Fase)temporada.Fase)
                 {
                     case Fase.Oitavas:
                     {
@@ -86,7 +128,7 @@ namespace APIGK2V.Controllers
             return retorno;
         }
 
-        private List<TimesmGolsViewModel> PegaSelecoesPorFaseRandomicamente(IList<Match> matches,int quantidade)
+        private List<TimesmGolsViewModel> PegaSelecoesPorFaseRandomicamente(IList<Match> matches,int quantidade, string ano = "")
         {
             var lista = matches.Select(x => x.HomeTeamName).Distinct().ToList();
             lista.Union(matches.Select(x => x.AwayTeamName).Distinct()).ToList();
@@ -100,7 +142,7 @@ namespace APIGK2V.Controllers
                  {
                      listaRandomica.Add(new  TimesmGolsViewModel
                      {
-                         Nome = nome,
+                         Nome = string.IsNullOrEmpty(ano) ? nome :  (nome + " do ano " + ano),
                          Gols = (matches.Where(x => x.HomeTeamName == nome).Sum(x => x.HomeTeamGoals) + matches.Where(x => x.HomeTeamName == nome).Sum(x => x.AwayTeamGoals))
                      } );
                      lista.Remove(nome);
@@ -269,7 +311,11 @@ namespace APIGK2V.Controllers
                 var apostasTemporada = usuario.Apostas.Where(x => x.CodigoTemporada == item._id.ToString()).ToList();
                 if(apostasTemporada.Where(x => x.Jogo.Fase == (int)Fase.Final).Count() == 0)
                 {
+                    if(apostasTemporada.Count > 0){
+                    item.FaseInicial = apostasTemporada.Select(x => x.Jogo.Fase).Max() + 1;
+                    }
                     retorno.Add(item);
+
                 }
             }
             return retorno;
@@ -291,10 +337,13 @@ namespace APIGK2V.Controllers
                 {
                     CodigoTemporada = apostaViewModel.IdTemporada,
                     Pontos = item.Pontos,
-                    Jogo = temporadaBd.Jogos.Where(x => x._id.ToString() == item.CodigoJogo).FirstOrDefault()
+                    Jogo = temporadaBd.Jogos.Where(x => x._id.ToString() == item.CodigoJogo).FirstOrDefault(),
+                    _id = ObjectId.GenerateNewId()
                 };                
+                usuario.Pontuacao += item.Pontos > 0 ? item.Pontos : 0;
                 usuario.Apostas.Add(aposta);
             }
+            _usuarioRepositorio.Update(ondeAposta, usuario);
             
         }
     }

@@ -5,6 +5,7 @@ using APIGK2V.Enum;
 using APIGK2V.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace APIGK2V.Controllers
 {
@@ -21,21 +22,35 @@ namespace APIGK2V.Controllers
 
         [Route("api/Usuario/Cadastrar")]
         [HttpPost]
-        public void Cadastrar([FromBody] UsuarioViewModel usuario)
+        public Usuario Cadastrar([FromBody] UsuarioViewModel usuario)
         {
+            
+                var usuarioAdd = new Usuario();
             try
             {                
-                var usuarioAdd = new Usuario();
+                if(string.IsNullOrEmpty(usuario._id))
+                {
                 usuarioAdd.Nome = usuario.nome;
                 usuarioAdd.Senha = usuario.senha;
                 usuarioAdd.Email  = usuario.email;      
                 usuarioAdd.TipoUsuario = (TipoUsuario)usuario.TipoUsuario;
+                
                 _UsuarioRepositorio.Insert(usuarioAdd);
+                }else{
+                    
+                    var onde = "{"+String.Format("_id : ObjectId('{0}')",usuario._id)+"}";
+                    usuarioAdd = _UsuarioRepositorio.Encontrar(onde);
+                    usuarioAdd.Nome = usuario.nome;
+                    usuarioAdd.Senha = usuario.senha;
+                    usuarioAdd.Email  = usuario.email;    
+                    _UsuarioRepositorio.Update(onde,usuarioAdd);
+                }
             }
             catch (System.Exception e)
             {                
                 throw;
             }
+            return usuarioAdd;
         }
 
         [Route("api/Usuario/Login")]
@@ -79,6 +94,15 @@ namespace APIGK2V.Controllers
 
             }
         }*/
+
+        [HttpPost]
+        [Route("api/Usuario/RankingUsuarioPorPontos")]
+        public IList<RetornoRankingViewModel> RankingUsuarioPorPontos()
+        {
+            var retorno =  _UsuarioRepositorio.Listar().Where(x => x.TipoUsuario != TipoUsuario.Admin).Select(x => new RetornoRankingViewModel { Nome = x.Nome, Pontuacao = x.Pontuacao }).OrderByDescending(x => x.Pontuacao).ToList();
+
+            return retorno;
+        }
 
     }
 }
