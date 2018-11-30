@@ -28,7 +28,7 @@ namespace APIGK2V.Controllers
                 var usuarioAdd = new Usuario();
             try
             {                
-                if(string.IsNullOrEmpty(usuario.id))
+                if(string.IsNullOrEmpty(usuario._id))
                 {
                 usuarioAdd.Nome = usuario.nome;
                 usuarioAdd.Senha = usuario.senha;
@@ -38,7 +38,7 @@ namespace APIGK2V.Controllers
                 _UsuarioRepositorio.Insert(usuarioAdd);
                 }else{
                     
-                    var onde = "{"+String.Format("_id : ObjectId('{0}')",usuario.id)+"}";
+                    var onde = "{"+String.Format("_id : ObjectId('{0}')",usuario._id)+"}";
                     usuarioAdd = _UsuarioRepositorio.Encontrar(onde);
                     usuarioAdd.Nome = usuario.nome;
                     usuarioAdd.Senha = usuario.senha;
