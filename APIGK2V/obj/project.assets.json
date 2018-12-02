@@ -12917,11 +12917,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\ViniciusMaggiOliveir\\Desktop\\projetos\\gk2v\\APIGK2V\\APIGK2V.csproj",
+      "projectUniqueName": "C:\\Users\\ViniciusMaggiOliveir\\Desktop\\projetos\\gk2v\\APIGK2V\\APIGK2V.csproj",
       "projectName": "APIGK2V",
-      "projectPath": "c:\\Users\\ViniciusMaggiOliveir\\Desktop\\projetos\\gk2v\\APIGK2V\\APIGK2V.csproj",
+      "projectPath": "C:\\Users\\ViniciusMaggiOliveir\\Desktop\\projetos\\gk2v\\APIGK2V\\APIGK2V.csproj",
       "packagesPath": "C:\\Users\\ViniciusMaggiOliveir\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\ViniciusMaggiOliveir\\Desktop\\projetos\\gk2v\\APIGK2V\\obj\\",
+      "outputPath": "C:\\Users\\ViniciusMaggiOliveir\\Desktop\\projetos\\gk2v\\APIGK2V\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12976,13 +12976,5 @@
         "warn": true
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file c:\\Users\\ViniciusMaggiOliveir\\Desktop\\projetos\\gk2v\\APIGK2V\\obj\\APIGK2V.csproj.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }
