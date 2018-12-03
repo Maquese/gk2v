@@ -96,6 +96,16 @@ namespace APIGK2V.Controllers
         }*/
 
         [HttpPost]
+        [Route("api/Usuario/PontuacaoPorId")]
+        public int PontuacaoPorId([FromBody]UsuarioViewModel usuario)
+        {
+            var onde = "{"+String.Format("_id : ObjectId('{0}')",usuario._id)+"}";
+            var   usuarioAdd = _UsuarioRepositorio.Encontrar(onde);
+
+            return usuarioAdd.Pontuacao;
+        }
+
+        [HttpPost]
         [Route("api/Usuario/RankingUsuarioPorPontos")]
         public IList<RetornoRankingViewModel> RankingUsuarioPorPontos()
         {
